@@ -3,14 +3,11 @@ import { ConfigService } from "@nestjs/config";
 import { PassportStrategy } from "@nestjs/passport";
 import { Strategy, VerifyCallback } from "passport-google-oauth2";
 import { AuthService } from "src/auth/auth.service";
-import { UserService } from "src/users/user.service";
-import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class GoogleAuthStrategy extends PassportStrategy(Strategy, 'google') {
   constructor(
     private configService: ConfigService,
-    private usersService: UserService,
     private authService: AuthService
   ) {
     super({
